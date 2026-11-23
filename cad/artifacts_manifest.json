@@ -1,0 +1,32 @@
+[
+  {
+    "original_path": "cad/CruiserIII_Retrofit_Detailed_V04.step",
+    "stored_path": "cad/CruiserIII_Retrofit_Detailed_V04.step.gz",
+    "sha256": "881a7cc69e11f4e56b39adc30f2ab89927ef75084a16194fbf529d67d3058af3",
+    "bytes": 6735466
+  },
+  {
+    "original_path": "cad/Friction_Drive_Modules_Detailed_V04.step",
+    "stored_path": "cad/Friction_Drive_Modules_Detailed_V04.step.gz",
+    "sha256": "e2c865b405eae5d7cdd17ad4de670d39c1dcb7182e7c40682ed226d908f8e4eb",
+    "bytes": 5425437
+  },
+  {
+    "original_path": "cad/Friction_Drive_Modules_Released_V04.step",
+    "stored_path": "cad/Friction_Drive_Modules_Released_V04.step.gz",
+    "sha256": "89b7114cd5122de557979bd071357e08c7b35edf24d7c06027ef55ca5566ed31",
+    "bytes": 5425585
+  },
+  {
+    "original_path": "cad/CruiserIII_Retrofit_VIEW_ONLY.glb",
+    "stored_path": "cad/CruiserIII_Retrofit_VIEW_ONLY.glb.gz",
+    "sha256": "1fe0ac4d5a9f5c05337fff806f3235d535bc198ec7644451b6ad41a718b423ee",
+    "bytes": 3407808
+  },
+  {
+    "original_path": "reference/base_wheelchair_v02/Cruiser_III_base_reference.step",
+    "stored_path": "reference/base_wheelchair_v02/Cruiser_III_base_reference.step.gz",
+    "sha256": "e8fed150162e45f421a86378894ccc8406dea8bdcaa878ab1f18bd2b40074b01",
+    "bytes": 1233527
+  }
+]

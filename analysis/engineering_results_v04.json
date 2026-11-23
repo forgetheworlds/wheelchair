@@ -1,0 +1,184 @@
+{
+  "assumptions": {
+    "mass_kg": 120.0,
+    "g": 9.81,
+    "tire_d_m": 0.6096,
+    "roller_d_m": 0.05,
+    "speed_mps": 0.8333333333333333,
+    "grade": 0.05,
+    "rolling_resistance": 0.02,
+    "acceleration_mps2": 0.3,
+    "stopping_decel_mps2": 0.5,
+    "preload_N_per_side": 140.0,
+    "mu_dry": 0.6,
+    "mu_wet": 0.15,
+    "motor_rated_Nm": 2.94,
+    "motor_rated_rpm": 300,
+    "motor_no_load_rpm": 630,
+    "motor_peak_current_A": 24.5,
+    "motor_rated_current_upper_A": 13.0,
+    "battery_V": 25.6,
+    "battery_Ah": 6.0,
+    "battery_usable_fraction": 0.7,
+    "electronics_W": 8.0,
+    "drivetrain_efficiency_low": 0.35,
+    "drivetrain_efficiency_high": 0.7,
+    "spring_stiffness_N_per_mm": 15.0,
+    "tire_runout_mm": 2.0,
+    "axle_d_mm": 10.0,
+    "shaft_bearing_inner_y_mm": 253.0,
+    "shaft_bearing_outer_y_mm": 273.0,
+    "tire_center_y_mm": 297.5,
+    "beam_external_y_mm": 20,
+    "beam_external_z_mm": 25,
+    "beam_wall_mm": 2,
+    "beam_span_mm": 205,
+    "aluminum_E_MPa": 69000,
+    "aluminum_yield_MPa": 240,
+    "steel_shaft_yield_MPa": 250,
+    "bracket_shock_multiplier": 2.0,
+    "assumed_effective_braces_per_side": 2
+  },
+  "motor": {
+    "target_roller_rpm": 318.30988618379064,
+    "target_wheel_rpm": 26.108094339221672,
+    "rated_torque_Nm": 2.94,
+    "continuous_torque_at_target_Nm_linear_approx": 2.7768755594535017,
+    "estimated_required_torque_5pct_cruise_Nm_per_side": 1.0300500000000001,
+    "estimated_required_torque_5pct_accel_Nm_per_side": 1.4800500000000003,
+    "torque_margin_5pct_accel": 1.8762038846346416,
+    "note": "NFP data have no published duty-cycle/temperature curve. 13A is upper bound, 150W max listing vs 24V*13A = 312W, so cannot infer precise efficiency/heat."
+  },
+  "traction": {
+    "dry_assumed": {
+      "mu": 0.6,
+      "Fmax_N_at_speed": 168.0,
+      "required_F_5pct_cruise_N": 82.40400000000001,
+      "required_F_5pct_accel_N": 118.40400000000001,
+      "accel_margin": 1.4188709840883753,
+      "required_preload_N_per_side_for_accel": 98.67000000000002,
+      "meets_5pct_accel": true
+    },
+    "wet_assumed": {
+      "mu": 0.15,
+      "Fmax_N_at_speed": 42.0,
+      "required_F_5pct_cruise_N": 82.40400000000001,
+      "required_F_5pct_accel_N": 118.40400000000001,
+      "accel_margin": 0.3547177460220938,
+      "required_preload_N_per_side_for_accel": 394.68000000000006,
+      "meets_5pct_accel": false
+    },
+    "spring": {
+      "nominal_N": 140.0,
+      "nominal_compression_mm_at_15N_per_mm": 9.333333333333334,
+      "runout_N_range": [
+        110.0,
+        170.0
+      ],
+      "requires_test_of_tire_deformation": true
+    }
+  },
+  "braking": {
+    "required_N_for_0_5mps2_downhill": 95.316,
+    "torque_Nm_per_side": 1.1914500000000001,
+    "normal_N_required_dry": 79.43,
+    "normal_N_required_wet": 317.72,
+    "loss_of_power_accel_downhill_mps2": 0.29430000000000006,
+    "power_loss_speed_after_3s_kmh": 6.178440000000001,
+    "power_loss_distance_after_7s_m": 13.043683333333334,
+    "critical_limit": "No independent fail-safe wheel braking; user parking locks cannot safely stop a moving chair."
+  },
+  "bracket": {
+    "profile": "aluminum rectangular hollow 20x25x2 mm, UNKNOWN actual alloy/temper",
+    "idealized_length_mm": 205,
+    "reaction_per_side_N": 152.00288419632042,
+    "two_x_shock_reaction_per_side_N": 304.00576839264085,
+    "load_per_effective_brace_N": 152.00288419632042,
+    "section_I_weak_mm4": 9498.666666666666,
+    "cross_section_mm2": 164,
+    "linear_beam_fem_tip_deflection_mm": 0.6660094921772938,
+    "closed_form_tip_mm": 0.6660094921595022,
+    "idealized_max_stress_MPa": 41.00653327692355,
+    "nominal_FOS_to_yield": 5.8527259151424085,
+    "rough_8_braces_total_mass_kg": 0.726192,
+    "critical_limitations": "Fixed-end beam surrogate ignores hollow-tube bolt-hole stress concentrations, joint slip, fatigue, wheelchair tube wall thickness, twisting and local buckling."
+  },
+  "shaft": {
+    "model": "solid 10mm round steel, two 6000-2RS bearings 253/273mm, roller center 297.5mm",
+    "shaft_overhang_mm": 24.5,
+    "bearing_spacing_mm": 20.0,
+    "radial_load_N_at_5pct_accel": 152.00288419632042,
+    "outer_bearing_reaction_N": 338.20641733681293,
+    "inner_bearing_reaction_N_opposite_direction": 186.20353314049254,
+    "max_shaft_bending_Nmm": 3724.0706628098505,
+    "max_nominal_bending_stress_MPa": 37.93307228222072,
+    "two_x_shock_bending_MPa": 75.86614456444144,
+    "nominal_FOS_to_yield_under_2x_shock": 3.295277510611437,
+    "limitations": "Bearing L10 life, shaft keyway, coupling misalignment, torsion and press-fit details not assessed."
+  },
+  "battery": {
+    "nominal_Wh": 153.60000000000002,
+    "assumed_usable_Wh": 107.52000000000001,
+    "five_percent_grade_estimates": [
+      {
+        "assumed_total_efficiency": 0.35,
+        "power_W": 204.20000000000002,
+        "average_current_A": 7.9765625,
+        "ideal_5pct_grade_range_km": 1.5796278158667971,
+        "runtime_minutes": 31.59255631733594
+      },
+      {
+        "assumed_total_efficiency": 0.45,
+        "power_W": 160.6,
+        "average_current_A": 6.273437499999999,
+        "ideal_5pct_grade_range_km": 2.008468244084683,
+        "runtime_minutes": 40.16936488169365
+      },
+      {
+        "assumed_total_efficiency": 0.7,
+        "power_W": 106.10000000000001,
+        "average_current_A": 4.14453125,
+        "ideal_5pct_grade_range_km": 3.0401508011310088,
+        "runtime_minutes": 60.80301602262018
+      }
+    ],
+    "driver_and_bms": "24.5A listed stall PER MOTOR; two motors could demand >40A in a startup fault. Current limit, fuse, controller voltage and BMS coordination require real testing."
+  },
+  "scenarios": {
+    "uphill_dry": {
+      "mode": "uphill_dry",
+      "mu": 0.6,
+      "final_speed_mps": 0.8332561050552426,
+      "distance_m": 4.6240978815324105,
+      "traction_limit_seconds": 0.0
+    },
+    "uphill_wet": {
+      "mode": "uphill_wet",
+      "mu": 0.15,
+      "final_speed_mps": 0.0002784999999999999,
+      "distance_m": 0.0009761424999999934,
+      "traction_limit_seconds": 7.004999999999873
+    },
+    "downhill_dry_stop": {
+      "mode": "downhill_dry_stop",
+      "mu": 0.6,
+      "final_speed_mps": 0.0,
+      "distance_m": 0.7861583529161353,
+      "traction_limit_seconds": 0.0
+    },
+    "downhill_wet_stop": {
+      "mode": "downhill_wet_stop",
+      "mu": 0.15,
+      "final_speed_mps": 0.44315483333337885,
+      "distance_m": 4.469924357500194,
+      "traction_limit_seconds": 7.004999999999873
+    },
+    "downhill_failure": {
+      "mode": "downhill_failure",
+      "mu": 0.6,
+      "final_speed_mps": 2.8949048333334186,
+      "distance_m": 13.063308107500259,
+      "traction_limit_seconds": 0.0
+    }
+  }
+}

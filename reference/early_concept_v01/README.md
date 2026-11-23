@@ -1,5 +1,5 @@
-# Early concept STEP (V0.1)
+# Original friction-drive concept (V0.1)
 
-This simplified B-rep STEP model is an **archival, conceptual geometry reference**, not the detailed V0.4 assembly. Its dimensions and joints were not measured from a real wheelchair, and it is not appropriate for fabrication or occupied use.
+The first mechanical layout explored two inboard geared motors, compact tire-contact rollers, and under-seat electronics on a manual wheelchair. This folder preserves the **OpenSCAD source** and corresponding early STEP assembly alongside the original CAD diagrams.
 
-For the current detailed CAD generator, see [`../../cad/build_high_fidelity.py`](../../cad/build_high_fidelity.py).
+The current component-level design lives in [`../../cad/`](../../cad/).

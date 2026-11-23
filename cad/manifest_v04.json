@@ -1,0 +1,1957 @@
+{
+  "base_solids": 145,
+  "retrofit_solids": 311,
+  "total_solids": 456,
+  "config": {
+    "wheel_d": 609.6,
+    "tire_center_y": 297.5,
+    "angle_deg": 130,
+    "roller_od": 50,
+    "roller_width": 34,
+    "roller_core_d": 36,
+    "drive_gear_d": 42,
+    "drive_gear_len": 43.5,
+    "dc775_can_d": 42,
+    "dc775_can_len": 66.7,
+    "encoder_len": 15,
+    "drive_shaft_d": 8,
+    "drive_shaft_len": 22,
+    "gearbox_front_y": 213,
+    "roller_axle_d": 10,
+    "bearing_od": 26,
+    "bearing_bore": 10,
+    "bearing_w": 8,
+    "bearing_centers_y": [
+      253,
+      273
+    ],
+    "frame_clamp_bore": 22.8,
+    "guide_slide_mm": 15,
+    "nominal_contact_preload_N": 140,
+    "bracket_web_t": 20,
+    "bracket_web_h": 25,
+    "battery_box": [
+      174,
+      96,
+      76
+    ],
+    "driver_box": [
+      112,
+      82,
+      43
+    ]
+  },
+  "contact_geometry": {
+    "axle_radius_mm": 304.8,
+    "roller_center_left_mm": [
+      -364.99135367462065,
+      297.5,
+      557.4414573406389
+    ],
+    "roller_center_right_mm": [
+      -364.99135367462065,
+      -297.5,
+      557.4414573406389
+    ],
+    "motor_mount_gearing": "NFP-42GP-775-EN 24V 13:1 candidate; no actual purchased motor; mounting PCD estimated",
+    "radial_gap_mm": 0,
+    "radial_contact_assumed": true
+  },
+  "released_geometry": {
+    "axle_radius_mm": 304.8,
+    "roller_center_left_mm": [
+      -374.63316781991875,
+      297.5,
+      568.9321239874237
+    ],
+    "roller_center_right_mm": [
+      -374.63316781991875,
+      -297.5,
+      568.9321239874237
+    ],
+    "motor_mount_gearing": "NFP-42GP-775-EN 24V 13:1 candidate; no actual purchased motor; mounting PCD estimated",
+    "radial_gap_mm": 15,
+    "radial_contact_assumed": false
+  },
+  "printed_STL_visual_only": [
+    "UNDERSEAT_24V_BATTERY_lid.stl",
+    "UNDERSEAT_DUAL_CONTROLLER_lid.stl",
+    "JOYSTICK_ENCLOSURE.stl",
+    "JOYSTICK_GRIP.stl"
+  ],
+  "parts": [
+    {
+      "name": "RIGHT_UPPER_clamp_jaw_0",
+      "category": "frame_clamps",
+      "source_status": "FRAME TUBE \u00d822 ESTIMATE",
+      "color": "aluminum"
+    },
+    {
+      "name": "RIGHT_UPPER_clamp_jaw_1",
+      "category": "frame_clamps",
+      "source_status": "FRAME TUBE \u00d822 ESTIMATE",
+      "color": "aluminum"
+    },
+    {
+      "name": "RIGHT_UPPER_clamp_-17_M5_shank",
+      "category": "fastener",
+      "source_status": "STANDARD DIAMETER; FIT TBD",
+      "color": "bolt"
+    },
+    {
+      "name": "RIGHT_UPPER_clamp_-17_head",
+      "category": "fastener",
+      "source_status": "VISUAL",
+      "color": "steel_dark"
+    },
+    {
+      "name": "RIGHT_UPPER_clamp_-17_nut",
+      "category": "fastener",
+      "source_status": "VISUAL",
+      "color": "steel_dark"
+    },
+    {
+      "name": "RIGHT_UPPER_clamp_17_M5_shank",
+      "category": "fastener",
+      "source_status": "STANDARD DIAMETER; FIT TBD",
+      "color": "bolt"
+    },
+    {
+      "name": "RIGHT_UPPER_clamp_17_head",
+      "category": "fastener",
+      "source_status": "VISUAL",
+      "color": "steel_dark"
+    },
+    {
+      "name": "RIGHT_UPPER_clamp_17_nut",
+      "category": "fastener",
+      "source_status": "VISUAL",
+      "color": "steel_dark"
+    },
+    {
+      "name": "RIGHT_LOWER_clamp_jaw_0",
+      "category": "frame_clamps",
+      "source_status": "FRAME TUBE \u00d822 ESTIMATE",
+      "color": "aluminum"
+    },
+    {
+      "name": "RIGHT_LOWER_clamp_jaw_1",
+      "category": "frame_clamps",
+      "source_status": "FRAME TUBE \u00d822 ESTIMATE",
+      "color": "aluminum"
+    },
+    {
+      "name": "RIGHT_LOWER_clamp_-17_M5_shank",
+      "category": "fastener",
+      "source_status": "STANDARD DIAMETER; FIT TBD",
+      "color": "bolt"
+    },
+    {
+      "name": "RIGHT_LOWER_clamp_-17_head",
+      "category": "fastener",
+      "source_status": "VISUAL",
+      "color": "steel_dark"
+    },
+    {
+      "name": "RIGHT_LOWER_clamp_-17_nut",
+      "category": "fastener",
+      "source_status": "VISUAL",
+      "color": "steel_dark"
+    },
+    {
+      "name": "RIGHT_LOWER_clamp_17_M5_shank",
+      "category": "fastener",
+      "source_status": "STANDARD DIAMETER; FIT TBD",
+      "color": "bolt"
+    },
+    {
+      "name": "RIGHT_LOWER_clamp_17_head",
+      "category": "fastener",
+      "source_status": "VISUAL",
+      "color": "steel_dark"
+    },
+    {
+      "name": "RIGHT_LOWER_clamp_17_nut",
+      "category": "fastener",
+      "source_status": "VISUAL",
+      "color": "steel_dark"
+    },
+    {
+      "name": "RIGHT_upper_steel_web_0",
+      "category": "primary_load_path",
+      "source_status": "UNMEASURED FRAME/20x25x2 AL TUBE",
+      "color": "steel"
+    },
+    {
+      "name": "RIGHT_lower_steel_web_0",
+      "category": "primary_load_path",
+      "source_status": "UNMEASURED FRAME/20x25x2 AL TUBE",
+      "color": "steel"
+    },
+    {
+      "name": "RIGHT_web_0_M8_pin_0",
+      "category": "fasteners",
+      "source_status": "CONCEPT PIN",
+      "color": "steel_dark"
+    },
+    {
+      "name": "RIGHT_web_0_M8_pin_1",
+      "category": "fasteners",
+      "source_status": "CONCEPT PIN",
+      "color": "steel_dark"
+    },
+    {
+      "name": "RIGHT_upper_steel_web_1",
+      "category": "primary_load_path",
+      "source_status": "UNMEASURED FRAME/20x25x2 AL TUBE",
+      "color": "steel"
+    },
+    {
+      "name": "RIGHT_lower_steel_web_1",
+      "category": "primary_load_path",
+      "source_status": "UNMEASURED FRAME/20x25x2 AL TUBE",
+      "color": "steel"
+    },
+    {
+      "name": "RIGHT_web_1_M8_pin_0",
+      "category": "fasteners",
+      "source_status": "CONCEPT PIN",
+      "color": "steel_dark"
+    },
+    {
+      "name": "RIGHT_web_1_M8_pin_1",
+      "category": "fasteners",
+      "source_status": "CONCEPT PIN",
+      "color": "steel_dark"
+    },
+    {
+      "name": "RIGHT_linear_guide_shaft_0",
+      "category": "engagement",
+      "source_status": "8mm ROD; FIT UNVERIFIED",
+      "color": "steel"
+    },
+    {
+      "name": "RIGHT_slider_carriage_0",
+      "category": "engagement",
+      "source_status": "SLIDING KINEMATICS CONCEPT",
+      "color": "aluminum"
+    },
+    {
+      "name": "RIGHT_linear_guide_shaft_1",
+      "category": "engagement",
+      "source_status": "8mm ROD; FIT UNVERIFIED",
+      "color": "steel"
+    },
+    {
+      "name": "RIGHT_slider_carriage_1",
+      "category": "engagement",
+      "source_status": "SLIDING KINEMATICS CONCEPT",
+      "color": "aluminum"
+    },
+    {
+      "name": "RIGHT_metal_motor_carriage",
+      "category": "metal_plate",
+      "source_status": "CONCEPT ENVELOPE",
+      "color": "aluminum"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_00",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_01",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_02",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_03",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_04",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_05",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_06",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_07",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_08",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_09",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_10",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_11",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_12",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_13",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_14",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_15",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_16",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_17",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_18",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_19",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_20",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_21",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_22",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_23",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_24",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_25",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_26",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_27",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_28",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_29",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_30",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_31",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_32",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_33",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_34",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_35",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_36",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_37",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_38",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_39",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_40",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_41",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_42",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_43",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_44",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_45",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_46",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_preload_spring_coil_segment_47",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "RIGHT_spring_adjuster",
+      "category": "engagement",
+      "source_status": "MECHANISM NOT VALIDATED",
+      "color": "accent"
+    },
+    {
+      "name": "RIGHT_quick_release_clevis",
+      "category": "engagement",
+      "source_status": "CONCEPT",
+      "color": "steel"
+    },
+    {
+      "name": "RIGHT_release_lever_steel",
+      "category": "engagement",
+      "source_status": "CONCEPT",
+      "color": "steel_dark"
+    },
+    {
+      "name": "RIGHT_release_lever_knob",
+      "category": "engagement",
+      "source_status": "PRINT CANDIDATE",
+      "color": "printed"
+    },
+    {
+      "name": "RIGHT_gearbox_42mm",
+      "category": "gearmotor",
+      "source_status": "NFP GEARMOTOR ENVELOPE",
+      "color": "gearbox"
+    },
+    {
+      "name": "RIGHT_gear_seam_7",
+      "category": "gearmotor",
+      "source_status": "VISUAL",
+      "color": "steel_dark"
+    },
+    {
+      "name": "RIGHT_gear_seam_27",
+      "category": "gearmotor",
+      "source_status": "VISUAL",
+      "color": "steel_dark"
+    },
+    {
+      "name": "RIGHT_gear_seam_42",
+      "category": "gearmotor",
+      "source_status": "VISUAL",
+      "color": "steel_dark"
+    },
+    {
+      "name": "RIGHT_gear_output_flange",
+      "category": "gearmotor",
+      "source_status": "PCD UNVERIFIED",
+      "color": "steel"
+    },
+    {
+      "name": "RIGHT_front_fastener_head_0",
+      "category": "gearmotor",
+      "source_status": "UNVERIFIED PCD",
+      "color": "steel_dark"
+    },
+    {
+      "name": "RIGHT_front_fastener_head_1",
+      "category": "gearmotor",
+      "source_status": "UNVERIFIED PCD",
+      "color": "steel_dark"
+    },
+    {
+      "name": "RIGHT_front_fastener_head_2",
+      "category": "gearmotor",
+      "source_status": "UNVERIFIED PCD",
+      "color": "steel_dark"
+    },
+    {
+      "name": "RIGHT_front_fastener_head_3",
+      "category": "gearmotor",
+      "source_status": "UNVERIFIED PCD",
+      "color": "steel_dark"
+    },
+    {
+      "name": "RIGHT_RS775_motor_can",
+      "category": "gearmotor",
+      "source_status": "CAN 42x66.7 NOMINAL",
+      "color": "motor"
+    },
+    {
+      "name": "RIGHT_motor_seam",
+      "category": "gearmotor",
+      "source_status": "VISUAL",
+      "color": "gearbox"
+    },
+    {
+      "name": "RIGHT_motor_rear_cap",
+      "category": "gearmotor",
+      "source_status": "VISUAL",
+      "color": "plastic"
+    },
+    {
+      "name": "RIGHT_encoder_cap",
+      "category": "gearmotor",
+      "source_status": "ENCODER DIMENSION ESTIMATED",
+      "color": "plastic"
+    },
+    {
+      "name": "RIGHT_encoder_connector",
+      "category": "gearmotor",
+      "source_status": "ESTIMATED",
+      "color": "green"
+    },
+    {
+      "name": "RIGHT_power_terminal_0",
+      "category": "gearmotor",
+      "source_status": "ESTIMATED",
+      "color": "copper"
+    },
+    {
+      "name": "RIGHT_power_terminal_1",
+      "category": "gearmotor",
+      "source_status": "ESTIMATED",
+      "color": "copper"
+    },
+    {
+      "name": "RIGHT_output_8mm_D_shaft",
+      "category": "gearmotor",
+      "source_status": "NFP SHAFT 8x22 PUBLISHED; FLAT DEPTH CONCEPT",
+      "color": "steel"
+    },
+    {
+      "name": "RIGHT_jaw_flex_coupling_8_to_10",
+      "category": "coupling",
+      "source_status": "COUPLING CONCEPT",
+      "color": "steel_dark"
+    },
+    {
+      "name": "RIGHT_coupling_grub_screw_-5",
+      "category": "fasteners",
+      "source_status": "VISUAL",
+      "color": "steel"
+    },
+    {
+      "name": "RIGHT_coupling_grub_screw_5",
+      "category": "fasteners",
+      "source_status": "VISUAL",
+      "color": "steel"
+    },
+    {
+      "name": "RIGHT_steel_axle_10mm",
+      "category": "roller_shaft",
+      "source_status": "STANDARD ROUND BAR NOMINAL",
+      "color": "steel"
+    },
+    {
+      "name": "RIGHT_6000_2RS_0_outer_race",
+      "category": "bearings",
+      "source_status": "ISO BEARING BOUNDARY",
+      "color": "steel"
+    },
+    {
+      "name": "RIGHT_6000_2RS_0_inner_race",
+      "category": "bearings",
+      "source_status": "ISO BEARING BOUNDARY",
+      "color": "steel"
+    },
+    {
+      "name": "RIGHT_6000_2RS_0_rubber_seal_-1",
+      "category": "bearings",
+      "source_status": "SIMPLIFIED SEALS",
+      "color": "seal"
+    },
+    {
+      "name": "RIGHT_6000_2RS_0_rubber_seal_1",
+      "category": "bearings",
+      "source_status": "SIMPLIFIED SEALS",
+      "color": "seal"
+    },
+    {
+      "name": "RIGHT_6000_2RS_0_aluminum_pillow_mount",
+      "category": "bearing_support",
+      "source_status": "BEARING HOUSING HOLES NOT VERIFIED",
+      "color": "aluminum"
+    },
+    {
+      "name": "RIGHT_6000_2RS_0_mount_screw_-12",
+      "category": "fasteners",
+      "source_status": "VISUAL",
+      "color": "steel_dark"
+    },
+    {
+      "name": "RIGHT_6000_2RS_0_mount_screw_12",
+      "category": "fasteners",
+      "source_status": "VISUAL",
+      "color": "steel_dark"
+    },
+    {
+      "name": "RIGHT_6000_2RS_1_outer_race",
+      "category": "bearings",
+      "source_status": "ISO BEARING BOUNDARY",
+      "color": "steel"
+    },
+    {
+      "name": "RIGHT_6000_2RS_1_inner_race",
+      "category": "bearings",
+      "source_status": "ISO BEARING BOUNDARY",
+      "color": "steel"
+    },
+    {
+      "name": "RIGHT_6000_2RS_1_rubber_seal_-1",
+      "category": "bearings",
+      "source_status": "SIMPLIFIED SEALS",
+      "color": "seal"
+    },
+    {
+      "name": "RIGHT_6000_2RS_1_rubber_seal_1",
+      "category": "bearings",
+      "source_status": "SIMPLIFIED SEALS",
+      "color": "seal"
+    },
+    {
+      "name": "RIGHT_6000_2RS_1_aluminum_pillow_mount",
+      "category": "bearing_support",
+      "source_status": "BEARING HOUSING HOLES NOT VERIFIED",
+      "color": "aluminum"
+    },
+    {
+      "name": "RIGHT_6000_2RS_1_mount_screw_-12",
+      "category": "fasteners",
+      "source_status": "VISUAL",
+      "color": "steel_dark"
+    },
+    {
+      "name": "RIGHT_6000_2RS_1_mount_screw_12",
+      "category": "fasteners",
+      "source_status": "VISUAL",
+      "color": "steel_dark"
+    },
+    {
+      "name": "RIGHT_aluminum_core",
+      "category": "roller",
+      "source_status": "CORE GEOMETRY CONCEPT",
+      "color": "aluminum"
+    },
+    {
+      "name": "RIGHT_rubber_tread",
+      "category": "roller",
+      "source_status": "50x34 DESIGN ASSUMPTION",
+      "color": "roller"
+    },
+    {
+      "name": "RIGHT_side_retainer_0",
+      "category": "roller",
+      "source_status": "CONCEPT",
+      "color": "steel_dark"
+    },
+    {
+      "name": "RIGHT_side_retainer_1",
+      "category": "roller",
+      "source_status": "CONCEPT",
+      "color": "steel_dark"
+    },
+    {
+      "name": "RIGHT_tread_groove_00",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "RIGHT_tread_groove_01",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "RIGHT_tread_groove_02",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "RIGHT_tread_groove_03",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "RIGHT_tread_groove_04",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "RIGHT_tread_groove_05",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "RIGHT_tread_groove_06",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "RIGHT_tread_groove_07",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "RIGHT_tread_groove_08",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "RIGHT_tread_groove_09",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "RIGHT_tread_groove_10",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "RIGHT_tread_groove_11",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "RIGHT_tread_groove_12",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "RIGHT_tread_groove_13",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "RIGHT_tread_groove_14",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "RIGHT_tread_groove_15",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "RIGHT_tread_groove_16",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "RIGHT_tread_groove_17",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "RIGHT_tread_groove_18",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "RIGHT_tread_groove_19",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "LEFT_UPPER_clamp_jaw_0",
+      "category": "frame_clamps",
+      "source_status": "FRAME TUBE \u00d822 ESTIMATE",
+      "color": "aluminum"
+    },
+    {
+      "name": "LEFT_UPPER_clamp_jaw_1",
+      "category": "frame_clamps",
+      "source_status": "FRAME TUBE \u00d822 ESTIMATE",
+      "color": "aluminum"
+    },
+    {
+      "name": "LEFT_UPPER_clamp_-17_M5_shank",
+      "category": "fastener",
+      "source_status": "STANDARD DIAMETER; FIT TBD",
+      "color": "bolt"
+    },
+    {
+      "name": "LEFT_UPPER_clamp_-17_head",
+      "category": "fastener",
+      "source_status": "VISUAL",
+      "color": "steel_dark"
+    },
+    {
+      "name": "LEFT_UPPER_clamp_-17_nut",
+      "category": "fastener",
+      "source_status": "VISUAL",
+      "color": "steel_dark"
+    },
+    {
+      "name": "LEFT_UPPER_clamp_17_M5_shank",
+      "category": "fastener",
+      "source_status": "STANDARD DIAMETER; FIT TBD",
+      "color": "bolt"
+    },
+    {
+      "name": "LEFT_UPPER_clamp_17_head",
+      "category": "fastener",
+      "source_status": "VISUAL",
+      "color": "steel_dark"
+    },
+    {
+      "name": "LEFT_UPPER_clamp_17_nut",
+      "category": "fastener",
+      "source_status": "VISUAL",
+      "color": "steel_dark"
+    },
+    {
+      "name": "LEFT_LOWER_clamp_jaw_0",
+      "category": "frame_clamps",
+      "source_status": "FRAME TUBE \u00d822 ESTIMATE",
+      "color": "aluminum"
+    },
+    {
+      "name": "LEFT_LOWER_clamp_jaw_1",
+      "category": "frame_clamps",
+      "source_status": "FRAME TUBE \u00d822 ESTIMATE",
+      "color": "aluminum"
+    },
+    {
+      "name": "LEFT_LOWER_clamp_-17_M5_shank",
+      "category": "fastener",
+      "source_status": "STANDARD DIAMETER; FIT TBD",
+      "color": "bolt"
+    },
+    {
+      "name": "LEFT_LOWER_clamp_-17_head",
+      "category": "fastener",
+      "source_status": "VISUAL",
+      "color": "steel_dark"
+    },
+    {
+      "name": "LEFT_LOWER_clamp_-17_nut",
+      "category": "fastener",
+      "source_status": "VISUAL",
+      "color": "steel_dark"
+    },
+    {
+      "name": "LEFT_LOWER_clamp_17_M5_shank",
+      "category": "fastener",
+      "source_status": "STANDARD DIAMETER; FIT TBD",
+      "color": "bolt"
+    },
+    {
+      "name": "LEFT_LOWER_clamp_17_head",
+      "category": "fastener",
+      "source_status": "VISUAL",
+      "color": "steel_dark"
+    },
+    {
+      "name": "LEFT_LOWER_clamp_17_nut",
+      "category": "fastener",
+      "source_status": "VISUAL",
+      "color": "steel_dark"
+    },
+    {
+      "name": "LEFT_upper_steel_web_0",
+      "category": "primary_load_path",
+      "source_status": "UNMEASURED FRAME/20x25x2 AL TUBE",
+      "color": "steel"
+    },
+    {
+      "name": "LEFT_lower_steel_web_0",
+      "category": "primary_load_path",
+      "source_status": "UNMEASURED FRAME/20x25x2 AL TUBE",
+      "color": "steel"
+    },
+    {
+      "name": "LEFT_web_0_M8_pin_0",
+      "category": "fasteners",
+      "source_status": "CONCEPT PIN",
+      "color": "steel_dark"
+    },
+    {
+      "name": "LEFT_web_0_M8_pin_1",
+      "category": "fasteners",
+      "source_status": "CONCEPT PIN",
+      "color": "steel_dark"
+    },
+    {
+      "name": "LEFT_upper_steel_web_1",
+      "category": "primary_load_path",
+      "source_status": "UNMEASURED FRAME/20x25x2 AL TUBE",
+      "color": "steel"
+    },
+    {
+      "name": "LEFT_lower_steel_web_1",
+      "category": "primary_load_path",
+      "source_status": "UNMEASURED FRAME/20x25x2 AL TUBE",
+      "color": "steel"
+    },
+    {
+      "name": "LEFT_web_1_M8_pin_0",
+      "category": "fasteners",
+      "source_status": "CONCEPT PIN",
+      "color": "steel_dark"
+    },
+    {
+      "name": "LEFT_web_1_M8_pin_1",
+      "category": "fasteners",
+      "source_status": "CONCEPT PIN",
+      "color": "steel_dark"
+    },
+    {
+      "name": "LEFT_linear_guide_shaft_0",
+      "category": "engagement",
+      "source_status": "8mm ROD; FIT UNVERIFIED",
+      "color": "steel"
+    },
+    {
+      "name": "LEFT_slider_carriage_0",
+      "category": "engagement",
+      "source_status": "SLIDING KINEMATICS CONCEPT",
+      "color": "aluminum"
+    },
+    {
+      "name": "LEFT_linear_guide_shaft_1",
+      "category": "engagement",
+      "source_status": "8mm ROD; FIT UNVERIFIED",
+      "color": "steel"
+    },
+    {
+      "name": "LEFT_slider_carriage_1",
+      "category": "engagement",
+      "source_status": "SLIDING KINEMATICS CONCEPT",
+      "color": "aluminum"
+    },
+    {
+      "name": "LEFT_metal_motor_carriage",
+      "category": "metal_plate",
+      "source_status": "CONCEPT ENVELOPE",
+      "color": "aluminum"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_00",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_01",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_02",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_03",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_04",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_05",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_06",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_07",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_08",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_09",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_10",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_11",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_12",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_13",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_14",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_15",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_16",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_17",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_18",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_19",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_20",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_21",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_22",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_23",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_24",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_25",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_26",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_27",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_28",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_29",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_30",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_31",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_32",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_33",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_34",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_35",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_36",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_37",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_38",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_39",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_40",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_41",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_42",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_43",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_44",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_45",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_46",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_preload_spring_coil_segment_47",
+      "category": "engagement_spring",
+      "source_status": "VISUAL; SPRING RATE UNKNOWN",
+      "color": "spring"
+    },
+    {
+      "name": "LEFT_spring_adjuster",
+      "category": "engagement",
+      "source_status": "MECHANISM NOT VALIDATED",
+      "color": "accent"
+    },
+    {
+      "name": "LEFT_quick_release_clevis",
+      "category": "engagement",
+      "source_status": "CONCEPT",
+      "color": "steel"
+    },
+    {
+      "name": "LEFT_release_lever_steel",
+      "category": "engagement",
+      "source_status": "CONCEPT",
+      "color": "steel_dark"
+    },
+    {
+      "name": "LEFT_release_lever_knob",
+      "category": "engagement",
+      "source_status": "PRINT CANDIDATE",
+      "color": "printed"
+    },
+    {
+      "name": "LEFT_gearbox_42mm",
+      "category": "gearmotor",
+      "source_status": "NFP GEARMOTOR ENVELOPE",
+      "color": "gearbox"
+    },
+    {
+      "name": "LEFT_gear_seam_7",
+      "category": "gearmotor",
+      "source_status": "VISUAL",
+      "color": "steel_dark"
+    },
+    {
+      "name": "LEFT_gear_seam_27",
+      "category": "gearmotor",
+      "source_status": "VISUAL",
+      "color": "steel_dark"
+    },
+    {
+      "name": "LEFT_gear_seam_42",
+      "category": "gearmotor",
+      "source_status": "VISUAL",
+      "color": "steel_dark"
+    },
+    {
+      "name": "LEFT_gear_output_flange",
+      "category": "gearmotor",
+      "source_status": "PCD UNVERIFIED",
+      "color": "steel"
+    },
+    {
+      "name": "LEFT_front_fastener_head_0",
+      "category": "gearmotor",
+      "source_status": "UNVERIFIED PCD",
+      "color": "steel_dark"
+    },
+    {
+      "name": "LEFT_front_fastener_head_1",
+      "category": "gearmotor",
+      "source_status": "UNVERIFIED PCD",
+      "color": "steel_dark"
+    },
+    {
+      "name": "LEFT_front_fastener_head_2",
+      "category": "gearmotor",
+      "source_status": "UNVERIFIED PCD",
+      "color": "steel_dark"
+    },
+    {
+      "name": "LEFT_front_fastener_head_3",
+      "category": "gearmotor",
+      "source_status": "UNVERIFIED PCD",
+      "color": "steel_dark"
+    },
+    {
+      "name": "LEFT_RS775_motor_can",
+      "category": "gearmotor",
+      "source_status": "CAN 42x66.7 NOMINAL",
+      "color": "motor"
+    },
+    {
+      "name": "LEFT_motor_seam",
+      "category": "gearmotor",
+      "source_status": "VISUAL",
+      "color": "gearbox"
+    },
+    {
+      "name": "LEFT_motor_rear_cap",
+      "category": "gearmotor",
+      "source_status": "VISUAL",
+      "color": "plastic"
+    },
+    {
+      "name": "LEFT_encoder_cap",
+      "category": "gearmotor",
+      "source_status": "ENCODER DIMENSION ESTIMATED",
+      "color": "plastic"
+    },
+    {
+      "name": "LEFT_encoder_connector",
+      "category": "gearmotor",
+      "source_status": "ESTIMATED",
+      "color": "green"
+    },
+    {
+      "name": "LEFT_power_terminal_0",
+      "category": "gearmotor",
+      "source_status": "ESTIMATED",
+      "color": "copper"
+    },
+    {
+      "name": "LEFT_power_terminal_1",
+      "category": "gearmotor",
+      "source_status": "ESTIMATED",
+      "color": "copper"
+    },
+    {
+      "name": "LEFT_output_8mm_D_shaft",
+      "category": "gearmotor",
+      "source_status": "NFP SHAFT 8x22 PUBLISHED; FLAT DEPTH CONCEPT",
+      "color": "steel"
+    },
+    {
+      "name": "LEFT_jaw_flex_coupling_8_to_10",
+      "category": "coupling",
+      "source_status": "COUPLING CONCEPT",
+      "color": "steel_dark"
+    },
+    {
+      "name": "LEFT_coupling_grub_screw_-5",
+      "category": "fasteners",
+      "source_status": "VISUAL",
+      "color": "steel"
+    },
+    {
+      "name": "LEFT_coupling_grub_screw_5",
+      "category": "fasteners",
+      "source_status": "VISUAL",
+      "color": "steel"
+    },
+    {
+      "name": "LEFT_steel_axle_10mm",
+      "category": "roller_shaft",
+      "source_status": "STANDARD ROUND BAR NOMINAL",
+      "color": "steel"
+    },
+    {
+      "name": "LEFT_6000_2RS_0_outer_race",
+      "category": "bearings",
+      "source_status": "ISO BEARING BOUNDARY",
+      "color": "steel"
+    },
+    {
+      "name": "LEFT_6000_2RS_0_inner_race",
+      "category": "bearings",
+      "source_status": "ISO BEARING BOUNDARY",
+      "color": "steel"
+    },
+    {
+      "name": "LEFT_6000_2RS_0_rubber_seal_-1",
+      "category": "bearings",
+      "source_status": "SIMPLIFIED SEALS",
+      "color": "seal"
+    },
+    {
+      "name": "LEFT_6000_2RS_0_rubber_seal_1",
+      "category": "bearings",
+      "source_status": "SIMPLIFIED SEALS",
+      "color": "seal"
+    },
+    {
+      "name": "LEFT_6000_2RS_0_aluminum_pillow_mount",
+      "category": "bearing_support",
+      "source_status": "BEARING HOUSING HOLES NOT VERIFIED",
+      "color": "aluminum"
+    },
+    {
+      "name": "LEFT_6000_2RS_0_mount_screw_-12",
+      "category": "fasteners",
+      "source_status": "VISUAL",
+      "color": "steel_dark"
+    },
+    {
+      "name": "LEFT_6000_2RS_0_mount_screw_12",
+      "category": "fasteners",
+      "source_status": "VISUAL",
+      "color": "steel_dark"
+    },
+    {
+      "name": "LEFT_6000_2RS_1_outer_race",
+      "category": "bearings",
+      "source_status": "ISO BEARING BOUNDARY",
+      "color": "steel"
+    },
+    {
+      "name": "LEFT_6000_2RS_1_inner_race",
+      "category": "bearings",
+      "source_status": "ISO BEARING BOUNDARY",
+      "color": "steel"
+    },
+    {
+      "name": "LEFT_6000_2RS_1_rubber_seal_-1",
+      "category": "bearings",
+      "source_status": "SIMPLIFIED SEALS",
+      "color": "seal"
+    },
+    {
+      "name": "LEFT_6000_2RS_1_rubber_seal_1",
+      "category": "bearings",
+      "source_status": "SIMPLIFIED SEALS",
+      "color": "seal"
+    },
+    {
+      "name": "LEFT_6000_2RS_1_aluminum_pillow_mount",
+      "category": "bearing_support",
+      "source_status": "BEARING HOUSING HOLES NOT VERIFIED",
+      "color": "aluminum"
+    },
+    {
+      "name": "LEFT_6000_2RS_1_mount_screw_-12",
+      "category": "fasteners",
+      "source_status": "VISUAL",
+      "color": "steel_dark"
+    },
+    {
+      "name": "LEFT_6000_2RS_1_mount_screw_12",
+      "category": "fasteners",
+      "source_status": "VISUAL",
+      "color": "steel_dark"
+    },
+    {
+      "name": "LEFT_aluminum_core",
+      "category": "roller",
+      "source_status": "CORE GEOMETRY CONCEPT",
+      "color": "aluminum"
+    },
+    {
+      "name": "LEFT_rubber_tread",
+      "category": "roller",
+      "source_status": "50x34 DESIGN ASSUMPTION",
+      "color": "roller"
+    },
+    {
+      "name": "LEFT_side_retainer_0",
+      "category": "roller",
+      "source_status": "CONCEPT",
+      "color": "steel_dark"
+    },
+    {
+      "name": "LEFT_side_retainer_1",
+      "category": "roller",
+      "source_status": "CONCEPT",
+      "color": "steel_dark"
+    },
+    {
+      "name": "LEFT_tread_groove_00",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "LEFT_tread_groove_01",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "LEFT_tread_groove_02",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "LEFT_tread_groove_03",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "LEFT_tread_groove_04",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "LEFT_tread_groove_05",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "LEFT_tread_groove_06",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "LEFT_tread_groove_07",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "LEFT_tread_groove_08",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "LEFT_tread_groove_09",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "LEFT_tread_groove_10",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "LEFT_tread_groove_11",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "LEFT_tread_groove_12",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "LEFT_tread_groove_13",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "LEFT_tread_groove_14",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "LEFT_tread_groove_15",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "LEFT_tread_groove_16",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "LEFT_tread_groove_17",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "LEFT_tread_groove_18",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "LEFT_tread_groove_19",
+      "category": "roller_detail",
+      "source_status": "VISUAL ONLY",
+      "color": "rubber"
+    },
+    {
+      "name": "UNDERSEAT_24V_BATTERY_shell",
+      "category": "electronics_enclosure",
+      "source_status": "UNSOURCED DIMENSIONS",
+      "color": "battery"
+    },
+    {
+      "name": "UNDERSEAT_24V_BATTERY_lid",
+      "category": "enclosure_print",
+      "source_status": "PRINT CANDIDATE",
+      "color": "printed"
+    },
+    {
+      "name": "UNDERSEAT_24V_BATTERY_lid_screw_-1_-1",
+      "category": "fasteners",
+      "source_status": "VISUAL",
+      "color": "steel"
+    },
+    {
+      "name": "UNDERSEAT_24V_BATTERY_lid_screw_-1_1",
+      "category": "fasteners",
+      "source_status": "VISUAL",
+      "color": "steel"
+    },
+    {
+      "name": "UNDERSEAT_24V_BATTERY_lid_screw_1_-1",
+      "category": "fasteners",
+      "source_status": "VISUAL",
+      "color": "steel"
+    },
+    {
+      "name": "UNDERSEAT_24V_BATTERY_lid_screw_1_1",
+      "category": "fasteners",
+      "source_status": "VISUAL",
+      "color": "steel"
+    },
+    {
+      "name": "UNDERSEAT_24V_BATTERY_cable_gland",
+      "category": "connectors",
+      "source_status": "CONCEPT",
+      "color": "plastic"
+    },
+    {
+      "name": "UNDERSEAT_DUAL_CONTROLLER_shell",
+      "category": "electronics_enclosure",
+      "source_status": "UNSOURCED DIMENSIONS",
+      "color": "electronics"
+    },
+    {
+      "name": "UNDERSEAT_DUAL_CONTROLLER_lid",
+      "category": "enclosure_print",
+      "source_status": "PRINT CANDIDATE",
+      "color": "printed"
+    },
+    {
+      "name": "UNDERSEAT_DUAL_CONTROLLER_lid_screw_-1_-1",
+      "category": "fasteners",
+      "source_status": "VISUAL",
+      "color": "steel"
+    },
+    {
+      "name": "UNDERSEAT_DUAL_CONTROLLER_lid_screw_-1_1",
+      "category": "fasteners",
+      "source_status": "VISUAL",
+      "color": "steel"
+    },
+    {
+      "name": "UNDERSEAT_DUAL_CONTROLLER_lid_screw_1_-1",
+      "category": "fasteners",
+      "source_status": "VISUAL",
+      "color": "steel"
+    },
+    {
+      "name": "UNDERSEAT_DUAL_CONTROLLER_lid_screw_1_1",
+      "category": "fasteners",
+      "source_status": "VISUAL",
+      "color": "steel"
+    },
+    {
+      "name": "UNDERSEAT_DUAL_CONTROLLER_cable_gland",
+      "category": "connectors",
+      "source_status": "CONCEPT",
+      "color": "plastic"
+    },
+    {
+      "name": "DRIVER_HEATSINK_FIN_00",
+      "category": "electronics",
+      "source_status": "VISUAL / DIMENSION UNSOURCED",
+      "color": "aluminum"
+    },
+    {
+      "name": "DRIVER_HEATSINK_FIN_01",
+      "category": "electronics",
+      "source_status": "VISUAL / DIMENSION UNSOURCED",
+      "color": "aluminum"
+    },
+    {
+      "name": "DRIVER_HEATSINK_FIN_02",
+      "category": "electronics",
+      "source_status": "VISUAL / DIMENSION UNSOURCED",
+      "color": "aluminum"
+    },
+    {
+      "name": "DRIVER_HEATSINK_FIN_03",
+      "category": "electronics",
+      "source_status": "VISUAL / DIMENSION UNSOURCED",
+      "color": "aluminum"
+    },
+    {
+      "name": "DRIVER_HEATSINK_FIN_04",
+      "category": "electronics",
+      "source_status": "VISUAL / DIMENSION UNSOURCED",
+      "color": "aluminum"
+    },
+    {
+      "name": "DRIVER_HEATSINK_FIN_05",
+      "category": "electronics",
+      "source_status": "VISUAL / DIMENSION UNSOURCED",
+      "color": "aluminum"
+    },
+    {
+      "name": "DRIVER_HEATSINK_FIN_06",
+      "category": "electronics",
+      "source_status": "VISUAL / DIMENSION UNSOURCED",
+      "color": "aluminum"
+    },
+    {
+      "name": "DRIVER_HEATSINK_FIN_07",
+      "category": "electronics",
+      "source_status": "VISUAL / DIMENSION UNSOURCED",
+      "color": "aluminum"
+    },
+    {
+      "name": "UNDERSEAT_FUSE_AND_MAIN_SWITCH",
+      "category": "power",
+      "source_status": "CONCEPT",
+      "color": "printed"
+    },
+    {
+      "name": "MAIN_POWER_SWITCH_CAP",
+      "category": "power",
+      "source_status": "VISUAL",
+      "color": "accent"
+    },
+    {
+      "name": "JOYSTICK_ENCLOSURE",
+      "category": "joystick",
+      "source_status": "CLAMP DIMENSIONS UNVERIFIED",
+      "color": "printed"
+    },
+    {
+      "name": "JOYSTICK_ARMREST_SADDLE_-1",
+      "category": "joystick",
+      "source_status": "CONCEPT",
+      "color": "steel_dark"
+    },
+    {
+      "name": "JOYSTICK_ARMREST_SADDLE_1",
+      "category": "joystick",
+      "source_status": "CONCEPT",
+      "color": "steel_dark"
+    },
+    {
+      "name": "JOYSTICK_RUBBER_BOOT",
+      "category": "joystick",
+      "source_status": "VISUAL",
+      "color": "rubber"
+    },
+    {
+      "name": "JOYSTICK_STALK",
+      "category": "joystick",
+      "source_status": "VISUAL",
+      "color": "steel"
+    },
+    {
+      "name": "JOYSTICK_GRIP",
+      "category": "joystick",
+      "source_status": "VISUAL",
+      "color": "joystick"
+    },
+    {
+      "name": "JOYSTICK_STATUS_LED",
+      "category": "joystick",
+      "source_status": "VISUAL",
+      "color": "green"
+    }
+  ],
+  "limitations": [
+    "Wheelchair frame reconstructed from photos, no physical measurements",
+    "Gear motor cylindrical dimensions based on manufacturer family, bolt-circle and encoder estimate",
+    "Battery and controller packaging approximate: no exact products selected",
+    "Non-functional engagement hinge, spring rate and sliding rail fit not engineered",
+    "No full-chair FEA, structural fatigue, occupant validation or brake failure safety verification"
+  ]
+}

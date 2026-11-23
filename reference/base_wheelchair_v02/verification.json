@@ -1,0 +1,21 @@
+{
+  "verification": "PASS",
+  "source_parts": 145,
+  "reimported_step_solids": 145,
+  "all_shapes_valid": true,
+  "bbox_mm": {
+    "length": 1052.3,
+    "width": 657.0,
+    "height": 892.0
+  },
+  "manufacturer_target_mm": {
+    "length": 1066.8,
+    "width": 660.4,
+    "height": 889.0
+  },
+  "limitations": [
+    "No individual parts verified by physical measurement",
+    "Not a mechanical design or certified wheelchair CAD",
+    "STEP solids editable but not native FreeCAD/Onshape sketch history"
+  ]
+}

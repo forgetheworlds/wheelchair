@@ -1,3 +1,4 @@
+# Versions used in the original Linux sandbox, not yet verified on other platforms.
 cadquery==2.8.0
 numpy==2.3.5
 scipy==1.17.0

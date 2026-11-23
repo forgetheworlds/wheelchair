@@ -1,40 +1,52 @@
-# DIY wheelchair friction-drive retrofit
+# Wheelchair Motorization — DIY Friction Drive
 
-**Goal:** Explore whether a compact, inexpensive and open-source motorization attachment could give people joystick control over an ordinary manual wheelchair, without purchasing a complete powered wheelchair. This is an accessibility project, not primarily a retail product.
+A low-cost, open-source way to add joystick-controlled movement to an existing manual wheelchair.
 
-**Cost ambition:** About **CAD $200** in DIY components, excluding the chair and tools. This has **not** been achieved or confirmed with landed supplier pricing.
+The idea is simple: instead of buying an entirely new powered wheelchair, attach two compact motors that drive the chair's **existing rear wheels** through rubber friction rollers. The project is focused on making an affordable design that anyone can study, build and improve, rather than selling a commercial product.
 
-## The concept
+**Parts-cost target: about CAD $200**, excluding the wheelchair and tools.
 
-Two small geared motors drive rubber friction rollers against the existing large rear wheelchair tires. A user-operated joystick controls the motors independently for forward/reverse movement and turning. The modules should be removable or disengageable so the wheelchair remains manually usable. Motors should be tucked close to the wheels, with a small battery and electronics package under the seat.
+![Friction-drive wheelchair CAD concept](images/hero_rear.png)
 
-## Decisions already made
+## The design
 
-- **Retrofit** an existing manual chair, rather than building a complete chair or replacing its wheels.
-- Use **two friction-drive rollers**, not a separate drive wheel or expensive powered replacement wheels.
-- **Compact, minimally clunky, removable**, with no permanent alteration to the wheelchair as a design target.
-- **3D-print** covers, alignment jigs, and suitable adapters; retain engineered metal members in structural load paths.
-- Use **generic, affordable components** from industrial/robotics/scooter suppliers and Alibaba rather than wheelchair-branded assemblies.
-- Use a **basic joystick** and conventional embedded motor control, with no autonomous driving or AI.
-- Retain existing wheel locks for **parking only**. Motor-controlled braking is the requested baseline. No independent wheel-mounted bike brake is included in the current prototype architecture.
-- The reference chair is the **Drive Medical Cruiser III**, initially the 18-inch-seat variant with 24-inch rear wheels.
+- **Two friction-drive motors:** A roller presses against each rear tire, turning the left and right wheels independently.
+- **Joystick steering:** Forward, reverse and turning use simple differential motor control.
+- **Compact layout:** Motor modules sit by the rear wheels; battery and control hardware sit underneath the seat.
+- **Removable installation:** Adjustable clamps and retractable rollers let the wheelchair return to manual pushing.
+- **3D printing:** Custom covers, mounts, spacers and assembly guides can be printed, with metal parts used where loads demand it.
+- **Common parts:** Motors, controllers, batteries and hardware are sourced from generic manufacturers, including Alibaba.
 
-## CAD and research in this repository
+The first CAD reference is the **Drive Medical Cruiser III** with a 24-inch rear-wheel configuration.
 
-- [Project specification](PROJECT_SPEC.md) explains goals, assumptions and unresolved safety gates.
-- [Design decisions](docs/DESIGN_DECISIONS.md) records the reasoning.
-- [CAD assembly generator](cad/build_high_fidelity.py) generates parametric B-rep parts and STEP exports with CadQuery.
-- [Reference-chair CAD generator](cad/cruiser_iii_base_parametric.py) builds the base wheelchair from published dimensions and photo-estimated geometry.
-- [Workshop measurements](reference/base_wheelchair_v02/SOURCES_AND_WORKSHOP.md) identifies measurements still needed from a real chair.
-- [Preliminary Alibaba research](reference/early_sourcing/ALIBABA_SOURCING_V01_ARCHIVAL.md) records exploratory suppliers and assumptions.
-- [Engineering assessment](docs/ENGINEERING_REVIEW.md) summarizes calculations and limitations.
+![Drive module close-up](images/module_detail.png)
 
-Generated binary STEP, STL, GLB, PDF and rendering artifacts are available in the separately prepared project archive; this first GitHub commit contains the *editable generator source* and the engineering documentation. Generate solids locally using the CAD scripts after installing a compatible CadQuery environment.
+## What's in this repository?
 
-## Important safety status
+| Location | Contents |
+|---|---|
+| [`cad/`](cad/) | Parametric CadQuery source, compressed STEP/GLB assemblies, and printable STL concepts |
+| [`reference/base_wheelchair_v02/`](reference/base_wheelchair_v02/) | Standalone CAD model of the original Cruiser III wheelchair |
+| [`images/`](images/) | Renderings, assembly views, traction plots and stress visualizations |
+| [`analysis/`](analysis/) | Propulsion, tire friction, motor-load and structural calculations |
+| [`tests/`](tests/) | Automated geometry and physics checks |
+| [`docs/RESEARCH.md`](docs/RESEARCH.md) | Suppliers, technical references and CAD research |
+| [`docs/DESIGN_DECISIONS.md`](docs/DESIGN_DECISIONS.md) | Why each design approach was chosen |
+| [`PROJECT_SPEC.md`](PROJECT_SPEC.md) | Project goals and engineering requirements |
+| [`Cruiser_III_Engineering_Review_V04.pdf`](Cruiser_III_Engineering_Review_V04.pdf) | Full engineering report |
 
-**Experimental design only. Not an approved wheelchair modification. Do not use to transport a person.** No hardware or human testing has taken place. Frame-clamp dimensions, tire friction, motor continuous ratings, battery performance, fatigue and real wheelchair clearances are not verified. Poor traction and power failure create unresolved stopping hazards; wheel locks are not dynamic brakes.
+## Rebuild the CAD and tests
 
-Numerical stress calculations and CAD validation are screening tools, **not physical stress tests or certification**.
+To restore the full-resolution STEP and GLB exports directly from the repository, run `python cad/restore_artifacts.py`. The original CAD files are reconstructed byte-for-byte.
 
-The public repository's existing MIT license is retained. A software license does not demonstrate fitness for medical use.
+To regenerate the parametric CAD and run the engineering tests, use Python and the dependencies in [`requirements.txt`](requirements.txt):
+
+```bash
+python -m pip install -r requirements.txt
+python cad/build_high_fidelity.py
+python -m unittest discover -s tests -p 'test_*.py' -v
+```
+
+## Development
+
+The project is at the **CAD and engineering prototype stage**. The next work is to fit the design to a measured wheelchair, confirm selected components, and build an unoccupied test rig. The engineering report covers braking, traction and structural work needed before use by a person.
