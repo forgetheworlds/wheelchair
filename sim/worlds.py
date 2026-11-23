@@ -1,4 +1,4 @@
-"""Cruiser III V1.0 — Rock-Solid Multi-World Physics + Kinematic 3D CAD Exploded Showcase."""
+"""Cruiser III V1.0 — Multi-World MuJoCo Driving Physics Builder."""
 from __future__ import annotations
 import math
 from dataclasses import dataclass
@@ -29,67 +29,9 @@ WORLDS: dict[str, WorldDef] = {
     "grass_camber":   WorldDef("grass_camber",   "Grass/Gravel + 4% Camber",       ground_mu=0.65, crr=0.052, camber_pct=4.0),
 }
 
-EXPLODE_OFFSETS: dict[str, tuple[float, float, float]] = {
-    "wheel_left":   ( 0.00,  0.26,  0.00),
-    "wheel_right":  ( 0.00, -0.26,  0.00),
-    "roller_left":  (-0.22,  0.22,  0.18),
-    "roller_right": (-0.22, -0.22,  0.18),
-    "drive_left":   (-0.14,  0.15,  0.10),
-    "drive_right":  (-0.14, -0.15,  0.10),
-    "underseat":    ( 0.00,  0.00, -0.20),
-    "joystick":     ( 0.00, -0.04,  0.10),
-    "caster_left":  ( 0.04,  0.08, -0.10),
-    "caster_right": ( 0.04, -0.08, -0.10),
-}
-
-
-def _setup_visuals_and_meshes(spec: mujoco.MjSpec, wet: bool = False, grass: bool = False):
-    spec.visual.global_.offwidth = 1280
-    spec.visual.global_.offheight = 720
-    spec.visual.headlight.ambient = [0.12, 0.13, 0.15]
-    spec.visual.headlight.diffuse = [0.44, 0.44, 0.46]
-    spec.visual.quality.shadowsize = 4096
-
-    def mat(name, rgba, rough=0.6, metal=0.0, spec_val=0.25):
-        m = spec.add_material(name=name)
-        m.rgba, m.roughness, m.metallic, m.specular = list(rgba), rough, metal, spec_val
-
-    mat("mat_wheel",    [0.035, 0.038, 0.045, 1.0], rough=0.82, metal=0.05, spec_val=0.12)
-    mat("mat_chassis",  [0.14,  0.16,  0.19,  1.0], rough=0.42, metal=0.55, spec_val=0.35)
-    mat("mat_pacf",     [0.05,  0.06,  0.075, 1.0], rough=0.70, metal=0.12, spec_val=0.18)
-    mat("mat_underseat",[0.07,  0.14,  0.22,  1.0], rough=0.55, metal=0.10, spec_val=0.22)
-    mat("mat_hub_red",  [0.72,  0.035, 0.05,  1.0], rough=0.38, metal=0.05, spec_val=0.30)
-
-    spec.add_texture(
-        name="sky", type=mujoco.mjtTexture.mjTEXTURE_SKYBOX, builtin=mujoco.mjtBuiltin.mjBUILTIN_GRADIENT,
-        width=512, height=512, rgb1=[0.32, 0.56, 0.82], rgb2=[0.78, 0.83, 0.88],
-    )
-    spec.add_texture(
-        name="gtex", type=mujoco.mjtTexture.mjTEXTURE_2D, builtin=mujoco.mjtBuiltin.mjBUILTIN_CHECKER,
-        width=512, height=512,
-        rgb1=[0.42, 0.44, 0.46] if not grass else [0.18, 0.34, 0.14],
-        rgb2=[0.48, 0.50, 0.52] if not grass else [0.22, 0.40, 0.17],
-    )
-    mg = spec.add_material(name="ground_mat")
-    mg.textures[mujoco.mjtTextureRole.mjTEXROLE_RGB] = "gtex"
-    mg.texrepeat = [60, 60]
-    mg.reflectance = 0.22 if wet else 0.02
-    mg.roughness = 0.25 if wet else 0.85
-
-    spec.worldbody.add_light(pos=[6, -6, 10], dir=[-0.4, 0.4, -0.8], diffuse=[0.85, 0.84, 0.80], castshadow=True)
-    spec.worldbody.add_light(pos=[-6, 6, 8], dir=[0.5, -0.5, -0.8], diffuse=[0.35, 0.38, 0.42], castshadow=False)
-
-    for mname, fname in [
-        ("m_chassis", "chassis_base.stl"), ("m_wl", "wheel_left.stl"), ("m_wr", "wheel_right.stl"),
-        ("m_caster", "caster_wheel.stl"), ("m_hub", "hub_motor_roller.stl"),
-        ("m_drv_l", "drive_mounts_left.stl"), ("m_drv_r", "drive_mounts_right.stl"),
-        ("m_under", "underseat_bay.stl"), ("m_joy", "joystick_pod.stl"),
-    ]:
-        spec.add_mesh(name=mname, file=str(MESH_DIR / fname), scale=[0.001, 0.001, 0.001])
-
 
 def build_world(world_key: str = "proving_ground") -> tuple[mujoco.MjModel, mujoco.MjData, WorldDef]:
-    """Build a rock-solid driving physics world (zero extra explode joints -> crisp solid ground contact)."""
+    """Build a rock-solid driving physics world with Filament PBR materials and Cruiser III V1.0 CAD meshes."""
     w = WORLDS[world_key]
     spec = mujoco.MjSpec()
     spec.modelname = f"cruiser_iii_v10_{w.key}"
@@ -105,7 +47,50 @@ def build_world(world_key: str = "proving_ground") -> tuple[mujoco.MjModel, mujo
         -9.81 * math.cos(pitch) * math.cos(roll),
     ]
 
-    _setup_visuals_and_meshes(spec, wet=w.wet, grass=(w.key == "grass_camber"))
+    # Visuals, lighting & calibrated Filament PBR materials
+    spec.visual.global_.offwidth = 1280
+    spec.visual.global_.offheight = 720
+    spec.visual.headlight.ambient = [0.12, 0.13, 0.15]
+    spec.visual.headlight.diffuse = [0.44, 0.44, 0.46]
+    spec.visual.quality.shadowsize = 4096
+
+    def mat(name, rgba, rough=0.6, metal=0.0, spec_val=0.25):
+        m = spec.add_material(name=name)
+        m.rgba, m.roughness, m.metallic, m.specular = list(rgba), rough, metal, spec_val
+
+    mat("mat_wheel",     [0.035, 0.038, 0.045, 1.0], rough=0.82, metal=0.05, spec_val=0.12)
+    mat("mat_chassis",   [0.14,  0.16,  0.19,  1.0], rough=0.42, metal=0.55, spec_val=0.35)
+    mat("mat_pacf",      [0.05,  0.06,  0.075, 1.0], rough=0.70, metal=0.12, spec_val=0.18)
+    mat("mat_underseat", [0.07,  0.14,  0.22,  1.0], rough=0.55, metal=0.10, spec_val=0.22)
+    mat("mat_hub_red",   [0.72,  0.035, 0.05,  1.0], rough=0.38, metal=0.05, spec_val=0.30)
+
+    grass = w.key == "grass_camber"
+    spec.add_texture(
+        name="sky", type=mujoco.mjtTexture.mjTEXTURE_SKYBOX, builtin=mujoco.mjtBuiltin.mjBUILTIN_GRADIENT,
+        width=512, height=512, rgb1=[0.32, 0.56, 0.82], rgb2=[0.78, 0.83, 0.88],
+    )
+    spec.add_texture(
+        name="gtex", type=mujoco.mjtTexture.mjTEXTURE_2D, builtin=mujoco.mjtBuiltin.mjBUILTIN_CHECKER,
+        width=512, height=512,
+        rgb1=[0.42, 0.44, 0.46] if not grass else [0.18, 0.34, 0.14],
+        rgb2=[0.48, 0.50, 0.52] if not grass else [0.22, 0.40, 0.17],
+    )
+    mg = spec.add_material(name="ground_mat")
+    mg.textures[mujoco.mjtTextureRole.mjTEXROLE_RGB] = "gtex"
+    mg.texrepeat = [60, 60]
+    mg.reflectance = 0.22 if w.wet else 0.02
+    mg.roughness = 0.25 if w.wet else 0.85
+
+    spec.worldbody.add_light(pos=[6, -6, 10], dir=[-0.4, 0.4, -0.8], diffuse=[0.85, 0.84, 0.80], castshadow=True)
+    spec.worldbody.add_light(pos=[-6, 6, 8], dir=[0.5, -0.5, -0.8], diffuse=[0.35, 0.38, 0.42], castshadow=False)
+
+    for mname, fname in [
+        ("m_chassis", "chassis_base.stl"), ("m_wl", "wheel_left.stl"), ("m_wr", "wheel_right.stl"),
+        ("m_caster", "caster_wheel.stl"), ("m_hub", "hub_motor_roller.stl"),
+        ("m_drv_l", "drive_mounts_left.stl"), ("m_drv_r", "drive_mounts_right.stl"),
+        ("m_under", "underseat_bay.stl"), ("m_joy", "joystick_pod.stl"),
+    ]:
+        spec.add_mesh(name=mname, file=str(MESH_DIR / fname), scale=[0.001, 0.001, 0.001])
 
     # Solid, stiff, non-sinking ground plane
     spec.worldbody.add_geom(
@@ -117,21 +102,24 @@ def build_world(world_key: str = "proving_ground") -> tuple[mujoco.MjModel, mujo
         for idx, (bx, h, tw) in enumerate([(2.2, 0.015, 0.14), (4.2, 0.022, 0.18)]):
             spec.worldbody.add_geom(
                 name=f"thresh_{idx}", type=mujoco.mjtGeom.mjGEOM_BOX, pos=[bx, 0, h / 2],
-                size=[tw * 0.25, 2.5, h / 2], rgba=[0.86, 0.68, 0.16, 1], friction=[w.ground_mu, 0.005, 0.001], solref=[0.008, 1.0],
+                size=[tw * 0.25, 2.5, h / 2], rgba=[0.86, 0.68, 0.16, 1],
+                friction=[w.ground_mu, 0.005, 0.001], solref=[0.008, 1.0],
             )
             ang = math.degrees(math.atan2(h, tw * 0.45))
             for s in (-1, 1):
                 spec.worldbody.add_geom(
                     name=f"thresh_{idx}_{s:+d}", type=mujoco.mjtGeom.mjGEOM_BOX,
                     pos=[bx + s * tw * 0.36, 0, h * 0.35], euler=[0, s * ang, 0],
-                    size=[tw * 0.28, 2.5, h * 0.25], rgba=[0.82, 0.64, 0.14, 1], friction=[w.ground_mu, 0.005, 0.001], solref=[0.008, 1.0],
+                    size=[tw * 0.28, 2.5, h * 0.25], rgba=[0.82, 0.64, 0.14, 1],
+                    friction=[w.ground_mu, 0.005, 0.001], solref=[0.008, 1.0],
                 )
         rlen, rslope, thick = 5.0, 0.05, 0.04
         rang, rh = math.atan(rslope), rlen * rslope
         cx, cz = 6.0 + (rlen / 2) * math.cos(rang), (rh / 2) - (thick / 2) * math.cos(rang)
         spec.worldbody.add_geom(
             name="ada_ramp", type=mujoco.mjtGeom.mjGEOM_BOX, pos=[cx, 0, cz], euler=[0, -math.degrees(rang), 0],
-            size=[rlen / 2, 1.15, thick / 2], rgba=[0.65, 0.67, 0.70, 1], friction=[0.88, 0.005, 0.001], solref=[0.008, 1.0],
+            size=[rlen / 2, 1.15, thick / 2], rgba=[0.65, 0.67, 0.70, 1],
+            friction=[0.88, 0.005, 0.001], solref=[0.008, 1.0],
         )
         for sy in (-1.12, 1.12):
             spec.worldbody.add_geom(
@@ -140,14 +128,15 @@ def build_world(world_key: str = "proving_ground") -> tuple[mujoco.MjModel, mujo
             )
         spec.worldbody.add_geom(
             name="landing", type=mujoco.mjtGeom.mjGEOM_BOX, pos=[6.0 + rlen + 2.0, 0, rh - thick / 2],
-            size=[2.0, 1.25, thick / 2], rgba=[0.60, 0.63, 0.66, 1], friction=[0.88, 0.005, 0.001], solref=[0.008, 1.0],
+            size=[2.0, 1.25, thick / 2], rgba=[0.60, 0.63, 0.66, 1],
+            friction=[0.88, 0.005, 0.001], solref=[0.008, 1.0],
         )
-        spec.worldbody.add_geom(name="wet_lane", type=mujoco.mjtGeom.mjGEOM_BOX, pos=[5.0, 3.2, 0.002], size=[6.0, 1.0, 0.002], rgba=[0.18, 0.42, 0.62, 0.85], friction=[0.35, 0.004, 0.001], contype=0, conaffinity=0)
-        spec.worldbody.add_geom(name="grass_lane", type=mujoco.mjtGeom.mjGEOM_BOX, pos=[5.0, -3.2, 0.002], size=[6.0, 1.0, 0.002], rgba=[0.24, 0.44, 0.20, 1], friction=[0.65, 0.015, 0.002], contype=0, conaffinity=0)
+        spec.worldbody.add_geom(name="wet_lane", type=mujoco.mjtGeom.mjGEOM_BOX, pos=[5.0, 3.2, 0.002], size=[6.0, 1.0, 0.002], rgba=[0.18, 0.42, 0.62, 0.85], contype=0, conaffinity=0)
+        spec.worldbody.add_geom(name="grass_lane", type=mujoco.mjtGeom.mjGEOM_BOX, pos=[5.0, -3.2, 0.002], size=[6.0, 1.0, 0.002], rgba=[0.24, 0.44, 0.20, 1], contype=0, conaffinity=0)
         for px, py in [(1.5, 1.25), (3.5, -1.25), (5.5, 1.25)]:
             spec.worldbody.add_geom(name=f"cone_{px}_{py}", type=mujoco.mjtGeom.mjGEOM_CYLINDER, pos=[px, py, 0.20], size=[0.07, 0.20, 0], rgba=[0.94, 0.36, 0.08, 1], contype=0, conaffinity=0)
 
-    # Rigid chassis body (120 kg total loaded mass — zero extra slide joints!)
+    # Rigid chassis body (120 kg total loaded mass)
     chassis = spec.worldbody.add_body(name="chassis", pos=[0, 0, 0.003])
     chassis.add_freejoint(name="root")
     chassis.add_geom(name="inertia_core", type=mujoco.mjtGeom.mjGEOM_BOX, pos=[-0.05, 0, 0.45], size=[0.20, 0.20, 0.04], mass=13.5, rgba=[0, 0, 0, 0], contype=0, conaffinity=0)
@@ -163,7 +152,7 @@ def build_world(world_key: str = "proving_ground") -> tuple[mujoco.MjModel, mujo
     for side, tag in ((1, "L"), (-1, "R")):
         chassis.add_geom(name=f"anti_tip_{tag}", type=mujoco.mjtGeom.mjGEOM_SPHERE, pos=[-0.360, side * 0.239, 0.074], size=[0.030, 0, 0], mass=0.25, rgba=[0, 0, 0, 0], friction=[0.2, 0.005, 0.001], solref=[0.008, 1.0])
 
-    # Rigidly seated 100.5 kg occupant mannequin (directly on chassis -> rock-solid CG & stability!)
+    # Rigidly seated 100.5 kg occupant mannequin
     occ_b, occ_s, occ_p = [0.22, 0.36, 0.56, 0.92], [0.76, 0.62, 0.52, 0.95], [0.16, 0.22, 0.32, 0.94]
     occ_parts = [
         ("occ_pelvis", mujoco.mjtGeom.mjGEOM_CAPSULE, dict(fromto=[-0.08, -0.10, 0.56, -0.08, 0.10, 0.56], size=[0.085, 0, 0], mass=22.0, rgba=occ_b)),
@@ -184,7 +173,6 @@ def build_world(world_key: str = "proving_ground") -> tuple[mujoco.MjModel, mujo
     chassis.add_camera(name="driver_pov",    pos=[-0.02,  0.00, 1.24], xyaxes=[0, -1, 0, 0.18, 0, 0.98])
     chassis.add_camera(name="hero_cam",      pos=[ 1.75, -1.65, 1.35], xyaxes=[0.69,  0.72, 0, -0.26, 0.25, 0.93])
     chassis.add_camera(name="drive_closeup", pos=[-0.72, -0.86, 0.78], xyaxes=[0.78, -0.62, 0,  0.24, 0.30, 0.92])
-    chassis.add_camera(name="explode_cam",   pos=[-1.55, -1.70, 1.35], xyaxes=[0.74, -0.67, 0,  0.26, 0.29, 0.92])
 
     # 24" Rear drive wheels + spinning 70 mm BLDC hub motors at 130 deg
     ang = math.radians(130.0)
@@ -212,49 +200,3 @@ def build_world(world_key: str = "proving_ground") -> tuple[mujoco.MjModel, mujo
     model = spec.compile()
     data = mujoco.MjData(model)
     return model, data, w
-
-
-def build_explode_showcase() -> tuple[mujoco.MjModel, mujoco.MjData]:
-    """Pure kinematic 3D CAD Exploded Showcase (zero gravity, fixed anchor, smooth 0%->100% slider)."""
-    spec = mujoco.MjSpec()
-    spec.modelname = "cruiser_iii_v10_exploded_cad"
-    spec.option.timestep = 0.005
-    spec.option.gravity = [0.0, 0.0, 0.0]
-
-    _setup_visuals_and_meshes(spec, wet=False, grass=False)
-    spec.worldbody.add_geom(name="studio_floor", type=mujoco.mjtGeom.mjGEOM_PLANE, size=[40, 40, 0.1], material="ground_mat", contype=0, conaffinity=0)
-
-    # Fixed floating anchor (no freejoint -> never flips, never clips!)
-    anchor = spec.worldbody.add_body(name="chassis", pos=[0, 0, 0.24])
-    anchor.add_geom(name="chassis_cad", type=mujoco.mjtGeom.mjGEOM_MESH, meshname="m_chassis", material="mat_chassis", contype=0, conaffinity=0, mass=1.0)
-
-    anchor.add_camera(name="explode_cam",   pos=[-1.55, -1.70, 1.25], xyaxes=[0.74, -0.67, 0,  0.26, 0.29, 0.92])
-    anchor.add_camera(name="hero_cam",      pos=[ 1.75, -1.65, 1.25], xyaxes=[0.69,  0.72, 0, -0.26, 0.25, 0.93])
-    anchor.add_camera(name="drive_closeup", pos=[-0.85, -1.05, 0.85], xyaxes=[0.78, -0.62, 0,  0.24, 0.30, 0.92])
-    anchor.add_camera(name="chase_cam",     pos=[-1.85, -1.10, 1.20], xyaxes=[0.51, -0.86, 0,  0.30, 0.18, 0.94])
-    anchor.add_camera(name="driver_pov",    pos=[-0.02,  0.00, 1.24], xyaxes=[0, -1, 0, 0.18, 0, 0.98])
-
-    def add_part(name, base_pos, mesh, mat_name):
-        vec = EXPLODE_OFFSETS[name]
-        dist = math.hypot(*vec)
-        axis = [v / dist for v in vec]
-        b = anchor.add_body(name=f"exp_{name}", pos=list(base_pos))
-        b.add_joint(name=f"exp_{name}_jnt", type=mujoco.mjtJoint.mjJNT_SLIDE, axis=axis, range=[0.0, dist], limited=True, damping=20.0, armature=1.0)
-        b.add_geom(name=f"{name}_cad", type=mujoco.mjtGeom.mjGEOM_MESH, meshname=mesh, material=mat_name, contype=0, conaffinity=0, mass=1.0)
-
-    ang = math.radians(130.0)
-    rx, rz = -0.153 + (0.3048 + 0.035) * math.cos(ang), 0.3048 + (0.3048 + 0.035) * math.sin(ang)
-    add_part("drive_left",   (0, 0, 0),                   "m_drv_l",  "mat_pacf")
-    add_part("drive_right",  (0, 0, 0),                   "m_drv_r",  "mat_pacf")
-    add_part("underseat",    (0, 0, 0),                   "m_under",  "mat_underseat")
-    add_part("joystick",     (0, 0, 0),                   "m_joy",    "mat_pacf")
-    add_part("wheel_left",   (-0.153,  0.2975, 0.3048),   "m_wl",     "mat_wheel")
-    add_part("wheel_right",  (-0.153, -0.2975, 0.3048),   "m_wr",     "mat_wheel")
-    add_part("roller_left",  (rx,      0.2975, rz),       "m_hub",    "mat_hub_red")
-    add_part("roller_right", (rx,     -0.2975, rz),       "m_hub",    "mat_hub_red")
-    add_part("caster_left",  ( 0.279,  0.2410, 0.1016),   "m_caster", "mat_wheel")
-    add_part("caster_right", ( 0.279, -0.2410, 0.1016),   "m_caster", "mat_wheel")
-
-    model = spec.compile()
-    data = mujoco.MjData(model)
-    return model, data

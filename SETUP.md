@@ -17,15 +17,15 @@ Open **http://localhost:8085/** in your browser:
 - **Drive:** Click-drag the **2D Spring-Return Thumb Joystick** in the HUD **or** hold **`W`/`A`/`S`/`D`** (or **Arrow Keys**).
 - **Speed Modes:** Click **`3 km/h`** / **`6 km/h`** / **`9 km/h`** (or press **`M`**).
 - **Safety & Manual Mode:** Press **`E`** for E-Stop / FOC Electronic Hill-Hold; press **`R`** to retract rollers for 0-drag manual coasting.
-- **Cameras:** Press **`V`** (or click **`Cam [V]`**) to cycle `Chase` → `Driver POV` → `Hero 3/4` → `Drive Detail` → `Explode View` → `Free Orbit`.
-- **Interactive 3D CAD Exploded View:** Drag the **`Explode (0%–100%)`** slider (or click **`Explode (100%)`**) to expand all 10 CAD sub-assemblies live in 3D space.
+- **Cameras:** Press **`V`** (or click **`Cam [V]`**) to cycle `Chase` → `Driver POV` → `Hero 3/4` → `Drive Detail` → `Free Orbit`.
 - **Switch Worlds Live:** Click any world in the HUD (`Proving Ground`, `8.3% Max ADA Ramp`, `10% Steep Driveway`, `Wet Tile 5% Ramp`, `Downhill -8% Regen`, `Grass/Gravel + 4% Camber`).
 
 ---
 
-## 2. Inspect or Edit the Finished CAD
+## 2. Inspect the Interactive Exploded CAD & Print Files
 
-- **Complete Assembly:** Decompress [`cad/CruiserIII_V10_Full.step.gz`](cad/CruiserIII_V10_Full.step.gz) (`gunzip -k cad/CruiserIII_V10_Full.step.gz`) to open the full B-rep STEP assembly in FreeCAD, Fusion 360, SolidWorks, or Onshape.
+- **Interactive 3D Exploded View (Animated GLB):** Open [`cad/CruiserIII_V10_Exploded.glb`](cad/CruiserIII_V10_Exploded.glb) with `cad viewer cad/CruiserIII_V10_Exploded.glb` (or drop it into any glTF/GLB viewer such as Blender, Windows 3D Viewer, or [gltf-viewer.donmccurdy.com](https://gltf-viewer.donmccurdy.com/)) and press **Play** on the `explode` animation clip to smoothly expand and inspect all sub-assemblies in 3D.
+- **Complete B-Rep Assembly:** Decompress [`cad/CruiserIII_V10_Full.step.gz`](cad/CruiserIII_V10_Full.step.gz) (`gunzip -k cad/CruiserIII_V10_Full.step.gz`) to open the full STEP assembly in FreeCAD, Fusion 360, SolidWorks, or Onshape.
 - **3D Printing:** Slice all 6 watertight STLs in [`cad/stl/`](cad/stl/) using the quantities, mirroring, and wall/infill settings listed in [`BOM.md`](BOM.md#2-3d-printed-parts-schedule-cadstl).
 
 ---

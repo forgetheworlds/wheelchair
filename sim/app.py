@@ -1,4 +1,4 @@
-"""Cruiser III V1.0 — Simplified Browser Simulator (Natural Joystick, Worlds & Interactive CAD Explode).
+"""Cruiser III V1.0 — Simplified Browser Driving Simulator (Natural Joystick & Multi-World Switcher).
 
 Run:
   python sim/app.py
@@ -17,11 +17,11 @@ from mujoco.studio import plugin
 from mujoco.studio import viewer_protocol
 from mujoco.studio.dear_imgui import dear_imgui as imgui
 
-from worlds import WORLDS, EXPLODE_OFFSETS, WorldDef, build_world, build_explode_showcase
+from worlds import WORLDS, WorldDef, build_world
 
 SPEED_MODES = {1: 3.2 / 3.6, 2: 6.0 / 3.6, 3: 9.0 / 3.6}
-CAMERAS = ["chase_cam", "driver_pov", "hero_cam", "drive_closeup", "explode_cam", "free"]
-CAM_LABELS = ["Chase", "Driver POV", "Hero 3/4", "Drive Detail", "Explode View", "Free Orbit"]
+CAMERAS = ["chase_cam", "driver_pov", "hero_cam", "drive_closeup", "free"]
+CAM_LABELS = ["Chase", "Driver POV", "Hero 3/4", "Drive Detail", "Free Orbit"]
 
 
 @dataclasses.dataclass
@@ -31,13 +31,11 @@ class ControlCmd(messages.Snapshot):
     speed_mode: int = 2
     power_on: bool = True
     engaged: bool = True
-    explode: float = 0.0
 
 
 @dataclasses.dataclass
-class ModeSwitchEvent(messages.Event):
+class WorldSwitchEvent(messages.Event):
     world_key: str = "proving_ground"
-    explode_mode: bool = False
 
 
 @dataclasses.dataclass
@@ -134,13 +132,11 @@ class FOCDriveController:
 
 
 class BrowserHUD(plugin.ViewerPlugin):
-    """Browser HUD: 2D Virtual Joystick + WASD, World Switcher, and Interactive CAD Exploded View."""
+    """Browser HUD: 2D Virtual Thumbstick + WASD/Arrows and Live World Switcher."""
 
     def __init__(self, initial_world: str):
         super().__init__()
         self.world_key = initial_world
-        self.explode_mode = False
-        self.explode_pct = 0.0
         self.mode, self.power_on, self.engaged = 2, True, True
         self.cam_idx, self._cam_ready = 0, False
         self.tel = Telemetry()
@@ -171,22 +167,6 @@ class BrowserHUD(plugin.ViewerPlugin):
                 self.viewer.camera.fixedcamid = cid
                 self.viewer.camera_index = cid
 
-    def _enter_explode(self, pct: float):
-        self.explode_pct = pct
-        if not self.explode_mode:
-            self.explode_mode = True
-            self.cam_idx = 4  # explode_cam
-            if self.viewer is not None:
-                self.viewer.send_to_sim(ModeSwitchEvent(world_key=self.world_key, explode_mode=True))
-
-    def _enter_drive(self, world_key: str):
-        self.world_key = world_key
-        self.explode_mode = False
-        self.explode_pct = 0.0
-        self.cam_idx = 0  # chase_cam
-        if self.viewer is not None:
-            self.viewer.send_to_sim(ModeSwitchEvent(world_key=world_key, explode_mode=False))
-
     @messages.handler
     def on_build_gui(self, event: messages.BuildGuiEvent) -> bool:
         if not self._cam_ready and self.viewer is not None and self.viewer.model is not None:
@@ -211,15 +191,12 @@ class BrowserHUD(plugin.ViewerPlugin):
         joy_on = False
 
         imgui.SetNextWindowPos(imgui.Vec2(14, 14), imgui.Cond.FirstUseEver)
-        imgui.SetNextWindowSize(imgui.Vec2(335, 540), imgui.Cond.FirstUseEver)
-        opened, _ = imgui.Begin("Cruiser III V1.0 — Controls, Worlds & CAD Explode", True)
+        imgui.SetNextWindowSize(imgui.Vec2(325, 455), imgui.Cond.FirstUseEver)
+        opened, _ = imgui.Begin("Cruiser III V1.0 — Drive & Worlds", True)
         if opened:
             t = self.tel
-            if self.explode_mode:
-                imgui.Text("VIEWING: 3D CAD Exploded Showcase")
-            else:
-                imgui.Text(f"Speed: {t.speed_kmh:+5.2f} km/h | Elev: {t.pos_z:4.2f} m")
-                imgui.Text(f"Batt:  {t.soc_pct:5.1f}% ({t.current_a:+5.1f} A) | Regen: +{t.regen_mwh:5.1f} mWh")
+            imgui.Text(f"Speed: {t.speed_kmh:+5.2f} km/h | Elev: {t.pos_z:4.2f} m")
+            imgui.Text(f"Batt:  {t.soc_pct:5.1f}% ({t.current_a:+5.1f} A) | Regen: +{t.regen_mwh:5.1f} mWh")
             imgui.Text(f"Cam:   {CAM_LABELS[self.cam_idx]} | Grip: {'SLIP!' if t.slip else 'LOCKED'}")
             imgui.Separator()
 
@@ -229,7 +206,7 @@ class BrowserHUD(plugin.ViewerPlugin):
             pos = imgui.GetCursorScreenPos()
             cx, cy = pos.x + pad * 0.5, pos.y + pad * 0.5
             imgui.InvisibleButton("##joy", imgui.Vec2(pad, pad))
-            if imgui.IsItemActive() and not self.explode_mode:
+            if imgui.IsItemActive():
                 mp = imgui.GetMousePos()
                 dx, dy = (mp.x - cx) / rad, (cy - mp.y) / rad
                 mag = math.hypot(dx, dy)
@@ -239,8 +216,6 @@ class BrowserHUD(plugin.ViewerPlugin):
                 thr_joy, str_joy, joy_on = expo(dy), expo(-dx), True
 
             dt_v, ds_v = (thr_joy if joy_on else thr_kb), (str_joy if joy_on else str_kb)
-            if self.explode_mode:
-                dt_v = ds_v = 0.0
             kx, ky = cx - ds_v * rad, cy - dt_v * rad
             dl = imgui.GetWindowDrawList()
             c_bg = imgui.ColorConvertFloat4ToU32(imgui.Vec4(0.11, 0.13, 0.16, 0.95))
@@ -270,35 +245,21 @@ class BrowserHUD(plugin.ViewerPlugin):
             if imgui.Button(("Rollers: ON [R]" if self.engaged else "Rollers: FREE [R]") + "##r"):
                 self.engaged = not self.engaged
 
-            # --- Interactive 3D CAD Exploded View ---
-            imgui.Separator()
-            imgui.Text("Interactive 3D CAD Exploded View:")
-            changed, val = imgui.SliderFloat("Explode##exp", self.explode_pct, 0.0, 100.0, "%.0f%%")
-            if changed:
-                if val > 1.0:
-                    self._enter_explode(val)
-                elif self.explode_mode:
-                    self.explode_pct = val
-            if imgui.Button("Explode CAD (100%)##e1"):
-                self._enter_explode(100.0)
-            imgui.SameLine()
-            if imgui.Button("Back to Drive##e0"):
-                self._enter_drive(self.world_key)
-
-            # --- World Switcher ---
+            # --- Live World Switcher ---
             imgui.Separator()
             imgui.Text("Switch World:")
             for wk, wdef in WORLDS.items():
-                mark = "> " if (wk == self.world_key and not self.explode_mode) else "  "
+                mark = "> " if wk == self.world_key else "  "
                 if imgui.Button(f"{mark}{wdef.label}##w_{wk}"):
-                    self._enter_drive(wk)
+                    self.world_key = wk
+                    if self.viewer is not None:
+                        self.viewer.send_to_sim(WorldSwitchEvent(world_key=wk))
         imgui.End()
 
         cmd = ControlCmd(
-            throttle=0.0 if self.explode_mode else (thr_joy if joy_on else thr_kb),
-            steer=0.0 if self.explode_mode else (str_joy if joy_on else str_kb),
+            throttle=thr_joy if joy_on else thr_kb,
+            steer=str_joy if joy_on else str_kb,
             speed_mode=self.mode, power_on=self.power_on, engaged=self.engaged,
-            explode=self.explode_pct / 100.0,
         )
         if cmd != self._last_cmd and self.viewer is not None:
             self._last_cmd = cmd
@@ -307,32 +268,21 @@ class BrowserHUD(plugin.ViewerPlugin):
 
 
 class SimRunner(plugin.SimPlugin):
-    """Runs either rock-solid driving physics OR pure kinematic 60 FPS CAD Explode Showcase."""
+    """Steps Cruiser III V1.0 driving physics and hot-swaps worlds cleanly."""
 
     def __init__(self, world: WorldDef):
         super().__init__()
         self.world = world
-        self.explode_mode = False
         self.ctrl = FOCDriveController(world)
         self.cmd = ControlCmd()
-        self._drive_dofs = None
-        self._exp_joints: list[tuple[int, int, float]] = []
+        self._dofs: tuple[int, int, int, int] | None = None
         self._n = 0
 
     def _bind(self, m: mujoco.MjModel):
-        if self.explode_mode:
-            self._exp_joints = []
-            for part, vec in EXPLODE_OFFSETS.items():
-                jid = mujoco.mj_name2id(m, mujoco.mjtObj.mjOBJ_JOINT, f"exp_{part}_jnt")
-                if jid >= 0:
-                    self._exp_joints.append((m.jnt_qposadr[jid], m.jnt_dofadr[jid], math.hypot(*vec)))
-            self._drive_dofs = None
-        else:
-            self._drive_dofs = tuple(
-                m.jnt_dofadr[mujoco.mj_name2id(m, mujoco.mjtObj.mjOBJ_JOINT, j)]
-                for j in ("left_wheel_hinge", "right_wheel_hinge", "left_roller_hinge", "right_roller_hinge")
-            )
-            self._exp_joints = []
+        self._dofs = tuple(
+            m.jnt_dofadr[mujoco.mj_name2id(m, mujoco.mjtObj.mjOBJ_JOINT, j)]
+            for j in ("left_wheel_hinge", "right_wheel_hinge", "left_roller_hinge", "right_roller_hinge")
+        )
 
     @messages.handler
     def on_cmd(self, c: ControlCmd) -> bool:
@@ -340,19 +290,11 @@ class SimRunner(plugin.SimPlugin):
         return False
 
     @messages.handler
-    def on_mode_switch(self, ev: ModeSwitchEvent) -> bool:
-        if self.handle is None:
-            return False
-        self.explode_mode = ev.explode_mode
-        self._drive_dofs = None
-        self._exp_joints = []
-        if ev.explode_mode:
-            m, d = build_explode_showcase()
-            self.handle.set_model(m, d)
-        elif ev.world_key in WORLDS:
+    def on_world_switch(self, ev: WorldSwitchEvent) -> bool:
+        if self.handle is not None and ev.world_key in WORLDS:
             m, d, w = build_world(ev.world_key)
-            self.world, self.ctrl = w, FOCDriveController(w)
-            self.handle.set_model(m, d)
+            self.world, self.ctrl, self._dofs = w, FOCDriveController(w), None
+            self.handle.set_model(m, data=d)
         return False
 
     @messages.handler
@@ -365,19 +307,9 @@ class SimRunner(plugin.SimPlugin):
         m, d = self.handle.model, self.handle.data
         if m is None or d is None:
             return False
-        if self.explode_mode:
-            if not self._exp_joints:
-                self._bind(m)
-            exp = float(np.clip(self.cmd.explode, 0.0, 1.0))
-            for qadr, dadr, dist in self._exp_joints:
-                d.qpos[qadr] = exp * dist
-                d.qvel[dadr] = 0.0
-            mujoco.mj_forward(m, d)
-            return False
-
-        if self._drive_dofs is None:
+        if self._dofs is None:
             self._bind(m)
-        ql, qr, rl, rr = self._drive_dofs
+        ql, qr, rl, rr = self._dofs
         tl, tr = self.ctrl.step(self.cmd, float(d.qvel[ql]), float(d.qvel[qr]), m.opt.timestep)
         d.qfrc_applied[:] = 0.0
         d.qfrc_applied[ql], d.qfrc_applied[qr] = tl, tr
@@ -395,7 +327,7 @@ class SimRunner(plugin.SimPlugin):
 
 
 def main():
-    p = argparse.ArgumentParser(description="Cruiser III V1.0 Browser Simulator")
+    p = argparse.ArgumentParser(description="Cruiser III V1.0 Browser Driving Simulator")
     p.add_argument("--world", default="proving_ground", choices=list(WORLDS.keys()))
     p.add_argument("--port", type=int, default=8085)
     p.add_argument("--no-browser", action="store_true")
