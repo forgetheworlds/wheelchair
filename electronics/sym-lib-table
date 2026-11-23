@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "wheelchair_v10_parts")(type "KiCad")(uri "${KIPRJMOD}/wheelchair_v10_parts.kicad_sym")(options "")(descr "Cruiser III V1.0 BLDC FOC"))
+)

@@ -1,1 +1,0 @@
-Early supplier searches were preliminary. Listings, currencies, MOQ, component compatibility and availability have not been revalidated and must not be used as a purchase-ready BOM. For current engineering status and goals see ../../PROJECT_SPEC.md.
